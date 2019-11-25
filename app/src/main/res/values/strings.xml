@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">FirebaseFirst</string>
+    <array name="gen">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+    </array>
 </resources>
