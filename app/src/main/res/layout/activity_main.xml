@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#211D44"
+    tools:context=".MainActivity">
+
+
+
+    <!--<TextView-->
+    <!--android:text="CMI"-->
+    <!--android:layout_marginEnd="8dp"-->
+    <!--android:layout_marginStart="8dp"-->
+    <!--android:layout_marginTop="50dp"-->
+    <!--android:textColor="#fff"-->
+    <!--android:textSize="70sp"-->
+    <!--app:layout_constraintHorizontal_bias="0.497"-->
+    <!--app:layout_constraintTop_toTopOf="parent"-->
+    <!--android:id="@+id/tvSplash"-->
+    <!--android:textAlignment="center"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content" />-->
+    <ImageView
+        android:layout_marginEnd="0dp"
+        android:layout_marginTop="0dp"
+        android:id="@+id/ivSpalsh"
+        android:src="@drawable/icget"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="280dp"
+        android:layout_height="320dp" />
+
+    <EditText
+        android:id="@+id/edtUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:textColor="#fff"
+        android:textColorHint="#fff"
+        app:layout_constraintTop_toBottomOf="@id/ivSpalsh"
+        tools:layout_editor_absoluteX="30dp" />
+
+    <EditText
+        android:id="@+id/edtPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:singleLine="false"
+        android:textColor="#fff"
+        android:textColorHint="#fff"
+        app:layout_constraintTop_toBottomOf="@id/edtUsername"
+        tools:layout_editor_absoluteX="30dp" />
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
+        android:background="#000"
+        android:text="Register"
+        android:textAllCaps="false"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edtPassword" />
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:text="SIGN IN"
+        android:textColor="#000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnRegister"
+        tools:layout_editor_absoluteX="142dp"
+        tools:layout_editor_absoluteY="593dp" />
+
+
+    <!-- app:layout_constraintTop_toBottomOf="@id/tvSplashSub"-->
+</android.support.constraint.ConstraintLayout>
