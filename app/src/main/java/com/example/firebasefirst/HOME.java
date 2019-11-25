@@ -21,6 +21,8 @@ public class HOME extends AppCompatActivity {
     EditText edtTxtName;
     Spinner spinner;
     Button btnSave;
+
+    DatabaseReference databaseReference;
     //DATAABASE END
 
 
@@ -35,6 +37,9 @@ public class HOME extends AppCompatActivity {
         logout = findViewById(R.id.logout);
 
         //DATABASE Start
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("artist");
+
         edtTxtName = findViewById(R.id.editTextName);
         spinner = findViewById(R.id.spinner);
         btnSave = findViewById(R.id.btnSave);
@@ -43,7 +48,7 @@ public class HOME extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                addArtist();
             }
         });
 
@@ -83,7 +88,12 @@ public class HOME extends AppCompatActivity {
 
 
         if(!TextUtils.isEmpty(name)){
+            String id =  databaseReference.push().getKey();
 
+
+            Artits artits = new Artits(id,name,genre);
+            databaseReference.child(id).setValue(artits);
+            Toast.makeText(HOME.this,"Artist Added",Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(HOME.this, "You should enter a name", Toast.LENGTH_SHORT).show();
         }
