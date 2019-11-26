@@ -7,12 +7,19 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HOME extends AppCompatActivity {
     Button logout;
@@ -23,6 +30,11 @@ public class HOME extends AppCompatActivity {
     Button btnSave;
 
     DatabaseReference databaseReference;
+
+
+    ListView listViewArtist;
+
+    List<Artits> artitsList;
     //DATAABASE END
 
 
@@ -44,7 +56,8 @@ public class HOME extends AppCompatActivity {
         spinner = findViewById(R.id.spinner);
         btnSave = findViewById(R.id.btnSave);
 
-
+        listViewArtist = findViewById(R.id.listView);
+        artitsList = new ArrayList<>();
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,5 +111,33 @@ public class HOME extends AppCompatActivity {
             Toast.makeText(HOME.this, "You should enter a name", Toast.LENGTH_SHORT).show();
         }
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                artitsList.clear();
+                for (DataSnapshot artistSnapShot : dataSnapshot.getChildren()){
+                    Artits artits = artistSnapShot.getValue(Artits.class);
+
+                    artitsList.add(artits);
+                }
+
+                ArtistList artistListAdapter = new ArtistList(HOME.this,artitsList);
+                listViewArtist.setAdapter(artistListAdapter);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
     //DATABASE END
 }
